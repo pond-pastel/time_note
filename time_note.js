@@ -14,6 +14,7 @@ function dataSave() {
 }
 
 function dataApply() {
+    toast("テスト用です。");
     const d = localStorage.getItem("time_note");
     if(d) {
         data = JSON.parse(d);
