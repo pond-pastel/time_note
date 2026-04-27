@@ -37,10 +37,10 @@ function dataApply() {
             timerSet(k);
         }
     });
-    if(data.tab !== undefined) {
+    /*if(data.tab !== undefined) {
         const radio = document.querySelector(`#${data.tab}-status`);
         radio.checked = true;
-    }
+    }*/
 }
 
 function isWakeLockSupported() {
