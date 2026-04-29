@@ -1,0 +1,486 @@
+:root {
+    --bg-color: #ffffb0;
+    --ln-color: #ff9900;
+    --hv-color: #ffee80;
+    --drawer-speed: 500ms;
+    font-family: sans-serif;
+    color: var(--ln-color);
+}
+
+h1,
+.details-title {
+    text-align: center;
+}
+
+.details-title {
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    background: var(--bg-color);
+    border: solid 2px var(--ln-color);
+    border-radius: 5px;
+    color: var(--ln-color);
+    cursor: pointer;
+    &:hover,
+    &:focus {
+        background: var(--hv-color);
+        font-weight: bold;
+    }
+}
+
+select {
+    background: var(--bg-color);
+    border: solid 2px var(--ln-color);
+    border-radius: 3px;
+    color: var(--ln-color);
+    cursor: pointer;
+    &:hover,
+    &:focus {
+        background: var(--hv-color);
+        font-weight: bold;
+    }
+}
+
+button,
+input,
+select,
+a {
+    margin: 0 5px;
+    font-size: 16px;
+    outline: none;
+}
+
+input[type="text"] {
+    background: var(--bg-color);
+    border: solid 2px var(--ln-color);
+    border-radius: 3px;
+    color: var(--ln-color);
+    &:focus {
+        background: var(--ln-color);
+        border-color: var(--hv-color);
+        color: var(--bg-color);
+    }
+}
+
+input[type="checkbox"] {
+    accent-color: var(--ln-color);
+    &:hover {
+        accent-color: var(--hv-color);
+    }
+    &:focus {
+        outline: solid var(--ln-color);
+    }
+    &:disabled {
+        cursor: not-allowed;
+    }
+    &:not(:disabled) {
+        cursor: pointer;
+    }
+}
+
+label {
+    &:has(input[type="checkbox"]:disabled) {
+        cursor: not-allowed;
+    }
+    &:has(input[type="checkbox"]:not(:disabled)) {
+        cursor: pointer;
+    }
+}
+
+a {
+    background: var(--ln-color);
+    color: var(--bg-color);
+    padding: 5px;
+    border-radius: 10px;
+    text-decoration: none;
+    &:hover,
+    &:focus {
+        text-decoration: underline;
+        outline: dotted var(--ln-color);
+    }
+}
+
+table {
+    border: solid 3px var(--ln-color);
+    border-collapse: collapse;
+    margin: 5px;
+    & ol {
+        margin: 0;
+    }
+}
+
+tr {
+    outline: none;
+}
+
+th,
+td {
+    border: solid 2px var(--ln-color);
+    white-space: nowrap;
+    text-align: center;
+    outline: none;
+}
+
+th {
+    background: var(--hv-color);
+}
+
+td {
+    background: var(--bg-color);
+}
+
+thead {
+    position: sticky;
+    top: -1px;
+    z-index: 1;
+}
+
+tbody tr {
+    cursor: pointer;
+    &:has(td:hover),
+    &:focus {
+        color: var(--bg-color);
+        & td {
+            background: var(--ln-color);
+            & .tag {
+                background: var(--bg-color);
+                color: var(--ln-color);
+            }
+        }
+    }
+}
+
+th[rowspan] {
+    cursor: pointer;
+    &:hover,
+    &:focus {
+        background: var(--ln-color);
+        color: var(--bg-color);
+    }
+}
+
+.date-th {
+    position: sticky;
+    left: -1px;
+}
+
+.description,
+.version-date {
+    font-size: 0.7em;
+    &::before {
+        content: "(";
+    }
+    &::after {
+        content: ")";
+    }
+}
+
+.overview {
+    &::before {
+        content: "概要: ";
+    }
+}
+
+#hidden-input-group {
+    display: none;
+}
+
+#blur {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100dvw;
+    height: 100dvh;
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#menu {
+    background: var(--bg-color);
+    border: solid 2px var(--ln-color);
+    border-radius: 5px;
+    width: 70dvw;
+    height: 70dvh;
+    overflow: scroll;
+}
+
+.left-button,
+.right-button {
+    background: var(--ln-color);
+    color: var(--bg-color);
+    font-size: large;
+    padding: 0 5px;
+    margin-bottom: 5px;
+    border-radius: 0.2em;
+    text-align: center;
+    &:hover,
+    &:focus {
+        color: var(--ln-color);
+    }
+}
+
+.left-button {
+    &::before {
+        content: "◀︎";
+    }
+}
+
+.right-button {
+    &::before {
+        content: "▶︎";
+    }
+}
+
+#modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100dvh;
+    width: 100dvw;
+    background: rgba(0, 0, 0, 0.5);
+
+}
+
+#toast {
+    background: var(--bg-color);
+    border: solid 2px var(--ln-color);
+    border-top: none;
+    border-radius: 0 0 1em 1em;
+    font-size: 1.5rem;
+}
+
+#toast-button-group {
+    flex-direction: row-reverse;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#table-box {
+    overflow: scroll;
+    max-width: calc(100dvw - 10px);
+}
+
+#content-select {
+    display: flex;
+    justify-content: center;
+    & div {
+        width: 50%;
+        & button {
+            background: var(--bg-color);
+            border: solid 2px var(--ln-color);
+            border-radius: 0;
+            cursor: pointer;
+            font-size: 1.5rem;
+            padding: 5px;
+            margin: 0;
+            text-align: center;
+            transition: padding 300ms ease;
+            width: 100%;
+            &:hover,
+            &:focus {
+                background: var(--hv-color);
+                font-weight: bold;
+                padding: 10px 5px;
+            }
+        }
+    }
+}
+
+.return-button-space {
+    padding-top: calc((1.5rem * 1.5) + 4px + 1rem);
+}
+
+.return-button {
+    background: var(--bg-color);
+    border: solid 2px var(--ln-color);
+    cursor: pointer;
+    font-size: 1.5rem;
+    padding: 0 5px;
+    margin: 0;
+    position: absolute;
+    top: 1rem;
+    transition: padding 300ms ease;
+    &:hover,
+    &:focus {
+        background: var(--hv-color);
+        font-weight: bold;
+        padding: 0 10px;
+    }
+}
+
+#hidden-input-group:has(#hidden-status:checked) ~ #view-content,
+#hidden-input-group:has(#hidden-status:checked) ~ #input-content,
+#hidden-input-group:has(#view-status:checked) ~ #content-select,
+#hidden-input-group:has(#view-status:checked) ~ #input-content,
+#hidden-input-group:has(#input-status:checked) ~ #content-select,
+#hidden-input-group:has(#input-status:checked) ~ #view-content,
+#hidden-input-group:has(#show-footer:checked) ~ #content-select,
+#hidden-input-group:has(#show-footer:checked) ~ #view-content,
+#hidden-input-group:has(#show-footer:checked) ~ #input-content,
+#hidden-input-group:has(#show-footer:not(:checked)) ~ #footer,
+#footer:has(#show-footer:not(:checked)) {
+    & > *:not(.footer-button-box) {
+        display: none;
+    }
+}
+
+#view-content,
+#input-content {
+    background: var(--bg-color);
+    border: solid 5px var(--ln-color);
+    box-sizing: border-box;
+    height: 100dvh;
+    width: 100dvw;
+    overflow-y: scroll;
+    position: fixed;
+    top: 0;
+    transition: left var(--drawer-speed) ease;
+}
+
+#view-content {
+    left: -100dvw;
+    & .return-button {
+        border-radius: 2em 0 0 2em;
+        border-right: none;
+        right: 0;
+        &::before {
+            content: "戻る\21A9";
+        }
+    }
+}
+
+#input-content {
+    left: 100dvw;
+    & .return-button {
+        border-radius: 0 2em 2em 0;
+        border-left: none;
+        &::before {
+            content: "\21AA戻る";
+        }
+    }
+}
+
+.tag-list,
+.use-tag-list,
+.button-group {
+    display: flex;
+    padding: 5px;
+    overflow: scroll;
+    white-space: nowrap;
+}
+
+.tag,
+.use-tag {
+    background: var(--ln-color);
+    color: var(--bg-color);
+    display: inline-block;
+    margin-left: 5px;
+    padding-right: 5px;
+    clip-path: polygon(0 30%, 8px 0, 100% 0, 100% 100%, 8px 100%, 0 70%);
+    &::before {
+        content: "・";
+    }
+}
+
+button.tag,
+button.use-tag {
+    &:hover,
+    &:focus {
+        background: var(--hv-color);
+        border-color: var(--hv-color);
+        color: var(--ln-color);
+    }
+}
+
+.tag-use-button {
+    border: none;
+    background: var(--ln-color);
+    color: var(--bg-color);
+    &:hover,
+    &:focus {
+        background: var(--hv-color);
+        color: var(--ln-color);
+    }
+    &::before {
+        content: "+使用";
+    }
+}
+
+#current-time {
+    font-size: 1.2rem;
+    & span {
+        font-weight: bold;
+    }
+}
+
+#hidden-input-group:has(#view-status:checked) ~ #view-content,
+#hidden-input-group:has(#input-status:checked) ~ #input-content {
+    left: 0;
+}
+
+#tag-content {
+    padding: 5px;
+}
+
+#hidden-input-group:has(#show-footer:checked) {
+    & ~ #footer {
+        top: 0;
+    }
+    & ~ #footer > .footer-button-box {
+        top: 0;
+        & #footer-button {
+            border-top: none;
+            border-bottom: solid 2px var(--ln-color);
+            border-radius: 0 0 5px 5px;
+            &::before {
+                content: "▼とじる";
+            }
+        }
+    }
+}
+
+#footer {
+    background: var(--bg-color);
+    position: fixed;
+    top: 100dvh;
+    left: 0;
+    width: 100dvw;
+    height: 100dvh;
+    transition: top var(--drawer-speed) ease;
+    & #footer-content {
+        max-height: calc(100dvh - (1.5 * 1.5rem + 12px));
+        overflow-y: scroll;
+    }
+    & .footer-button-box {
+        position: absolute;
+        font-size: 1.5rem;
+        top: calc(-1.5em - 2px);
+        display: flex;
+        width: 100dvw;
+        justify-content: center;
+        transition: top var(--drawer-speed) ease;
+        pointer-events: none;
+        & #footer-button {
+            border-bottom: none;
+            border-radius: 5px 5px 0 0;
+            font-size: 1.5rem;
+            pointer-events: auto;
+            &::before {
+                content: "▲設定・詳細";
+            }
+        }
+    }
+}
+
+#footer-button-space,
+.footer-space {
+    height: calc(1.5 * 1.5rem + 2px);
+    width: 1px;
+}
