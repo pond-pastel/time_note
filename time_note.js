@@ -1207,12 +1207,12 @@ function searchPopup() {
     blur.append(menu);
     document.body.append(blur);
     searchTagAdd();
-    /*const searchCriteriaEles = document.querySelectorAll("#menu input, #menu select");
+    const searchCriteriaEles = document.querySelectorAll("#menu input, #menu select");
     searchCriteriaEles.forEach((e) => {
         e.addEventListener("change", () => {
             searchCriteriaSave();
         });
-    });*/
+    });
 }
 
 function searchTagAdd() {
